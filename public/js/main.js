@@ -175,12 +175,16 @@ $(function() {
         function buildLabelsTab () {
             if (data.responses[0].labelAnnotations.length > 0) {
                 $("#num_labels_id_"+cloneCount).text(data.responses[0].labelAnnotations.length);
+                
                 let labelsDataArr = [];
                 data.responses[0].labelAnnotations.forEach(function(el,i){
                     labelsDataArr.push([el.description,_.round(el.score,2)]);
                 });
                 // console.log(labelsDataArr);
                 buildLabelsGraph("labelsChartContainer_"+cloneCount,labelsDataArr);
+
+                buildLabelsList("labelsListConstainer_"+cloneCount,labelsDataArr);
+
             } else {
                 $("#labels-view_"+cloneCount)
                     .empty()
@@ -664,6 +668,21 @@ $(function() {
                 }]
             });
         }
+
+        function buildLabelsList (containerId,seriesData) {
+
+            let $table = "<table/>"
+                for (let i = 0; i < seriesData.length; i ++) {
+
+                //console.log(seriesData[i]);
+
+                $($table).append(
+                  '<tr><td>${seriesData[i][0]</td></tr>'
+                );
+                }
+                $("#labelsListContainer_"+cloneCount).append($table);
+
+            }   
 
         function buildWebMatchGraph (containerId,seriesData) {
             Highcharts.chart(containerId, {

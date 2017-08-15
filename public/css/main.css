@@ -5854,12 +5854,6 @@ footer {
       width: 30px;
       height: 30px; }
 
-ul li {
-  list-style-type: disc;
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-
 .navbar-default .navbar-nav > li.active > a {
   border-bottom-color: #3f51b5; }
 

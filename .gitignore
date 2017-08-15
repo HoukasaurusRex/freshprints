@@ -32,5 +32,6 @@ Thumbs.db
 #folders
 sensitive
 uploads
+$HOME
 
 ali_test.js

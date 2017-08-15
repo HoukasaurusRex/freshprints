@@ -69,10 +69,10 @@
 
                         <ul class="nav nav-tabs ">
                             <li class="active">
-                                <a id="face-tab" data-toggle="tab" href="#face-view">Faces<span id="num_faces_id" class="badge gvarv_badge"></span></a>
+                                <a id="labels-tab" data-toggle="tab" href="#labels-view">Labels<span id="num_labels_id" class="badge gvarv_badge"></span></a>
                             </li>
                             <li >
-                                <a id="labels-tab" data-toggle="tab" href="#labels-view">Labels<span id="num_labels_id" class="badge gvarv_badge"></span></a>
+                                <a id="face-tab" data-toggle="tab" href="#face-view">Faces<span id="num_faces_id" class="badge gvarv_badge"></span></a>
                             </li>
                             <li >
                                 <a id="text-tab" data-toggle="tab" href="#text-view">Text<span id="num_text_id" class="badge gvarv_badge"></span></a>
@@ -95,8 +95,12 @@
                         </ul>
                     </header>
 
-                    <div class="tab-content collapse" id="foo">
-                        <div id="face-view" class="tab-pane fade panel-body active in">
+                    <div class="tab-content" id="foo">
+
+                        <div id="labels-view" class="tab-pane fade panel-body active in">
+                            <div id="labelsChartContainer" style="min-width: 200px; max-width: 800px; height: 400px; margin:25px auto"></div>
+                        </div>
+                        <div id="face-view" class="tab-pane fade panel-body">
                             <div style="margin:10px 0;">
                                 <h4>Use the the mouse and mousewheel or buttons below to pan and zoom. Every detected face has a number in top left corner of its bounding box</h4>
                                 <button id="zoomIn_face" class="btn btn-sm">+</button>
@@ -106,7 +110,24 @@
                                 <button id="goUp_face" class="btn btn-sm">^</button>
                                 <button id="goDown_face" class="btn btn-sm">v</button>
                             </div>
-
+                            <div id="text-view" class="tab-pane fade panel-body">
+                            <div style="margin:10px 0;">
+                                <h4>Use the the mouse and mousewheel or buttons below to pan and zoom</h4>
+                                <button id="zoomIn_text" class="btn btn-sm">+</button>
+                                <button id="zoomOut_text" class="btn btn-sm">-</button>
+                                <button id="goLeft_text" class="btn btn-sm"><</button>
+                                <button id="goRight_text" class="btn btn-sm">></button>
+                                <button id="goUp_text" class="btn btn-sm">^</button>
+                                <button id="goDown_text" class="btn btn-sm">v</button>
+                            </div>
+                            <div id="textCanvasContainer" style="border: dotted gray thin;height:400px;overflow: hidden">
+                                <canvas id="text_canvas"></canvas>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"><p style="font-weight:400;">Detected Text:</p></div>
+                                <div class="col-md-8"><p id="detectedTextParagraph"></p></div>
+                            </div>
+                        </div>
                             <div id="canvasContainer" style="border: dotted gray thin;height:400px;overflow: hidden">
                                 <canvas id="face_canvas"></canvas>
                             </div>
@@ -128,27 +149,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div id="labels-view" class="tab-pane fade panel-body">
-                            <div id="labelsChartContainer" style="min-width: 200px; max-width: 800px; height: 400px; margin:25px auto"></div>
-                        </div>
-                        <div id="text-view" class="tab-pane fade panel-body">
-                            <div style="margin:10px 0;">
-                                <h4>Use the the mouse and mousewheel or buttons below to pan and zoom</h4>
-                                <button id="zoomIn_text" class="btn btn-sm">+</button>
-                                <button id="zoomOut_text" class="btn btn-sm">-</button>
-                                <button id="goLeft_text" class="btn btn-sm"><</button>
-                                <button id="goRight_text" class="btn btn-sm">></button>
-                                <button id="goUp_text" class="btn btn-sm">^</button>
-                                <button id="goDown_text" class="btn btn-sm">v</button>
-                            </div>
-                            <div id="textCanvasContainer" style="border: dotted gray thin;height:400px;overflow: hidden">
-                                <canvas id="text_canvas"></canvas>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4"><p style="font-weight:400;">Detected Text:</p></div>
-                                <div class="col-md-8"><p id="detectedTextParagraph"></p></div>
-                            </div>
-                        </div>
+                        
                         <div id="webmatch-view" class="tab-pane fade panel-body">
                             <div id="webmatchChartContainer" style="min-width: 200px; max-width: 800px; height: 400px; margin:25px auto"></div>
                             <div class="panel-group" role="tablist" aria-multiselectable="true" id="webMatchAccordion">

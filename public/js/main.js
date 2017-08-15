@@ -159,8 +159,8 @@ $(function() {
 
 
         // Build tabs
-        buildFaceTab ();
         buildLabelsTab ();
+        buildFaceTab ();
         buildTextTab ();
         buildWebTab ();
         buildSafeSearchTab ();
@@ -168,10 +168,27 @@ $(function() {
         buildLogosTab ();
 
         // JSON tab
-        $("#json-view_"+cloneCount).append(renderjson(data));
+        $("#json-view_"+cloneCount).append(renderjson(data));      
 
-        // Face tab
+        // Labels tab
         // create new gvarv obj
+        function buildLabelsTab () {
+            if (data.responses[0].labelAnnotations.length > 0) {
+                $("#num_labels_id_"+cloneCount).text(data.responses[0].labelAnnotations.length);
+                let labelsDataArr = [];
+                data.responses[0].labelAnnotations.forEach(function(el,i){
+                    labelsDataArr.push([el.description,_.round(el.score,2)]);
+                });
+                // console.log(labelsDataArr);
+                buildLabelsGraph("labelsChartContainer_"+cloneCount,labelsDataArr);
+            } else {
+                $("#labels-view_"+cloneCount)
+                    .empty()
+                    .append("<h3 class='text-center no-data' >NONE DETECTED</h3>");
+            }
+        }
+        
+        // Faces tab
         function buildFaceTab () {
             if(data.responses[0].faceAnnotations.length > 0) {
                 const gvarv = new Gvarv("face_canvas_" + cloneCount);
@@ -230,24 +247,6 @@ $(function() {
                     .append("<h3 class='text-center no-data' >NONE DETECTED</h3>");
             }
         }
-
-        // Labels tab
-        function buildLabelsTab () {
-            if (data.responses[0].labelAnnotations.length > 0) {
-                $("#num_labels_id_"+cloneCount).text(data.responses[0].labelAnnotations.length);
-                let labelsDataArr = [];
-                data.responses[0].labelAnnotations.forEach(function(el,i){
-                    labelsDataArr.push([el.description,_.round(el.score,2)]);
-                });
-                // console.log(labelsDataArr);
-                buildLabelsGraph("labelsChartContainer_"+cloneCount,labelsDataArr);
-            } else {
-                $("#labels-view_"+cloneCount)
-                    .empty()
-                    .append("<h3 class='text-center no-data' >NONE DETECTED</h3>");
-            }
-        }
-
         // Text tab
         function buildTextTab () {
             if (data.responses[0].textAnnotations.length > 0) {

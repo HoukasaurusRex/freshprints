@@ -1,0 +1,44 @@
+{
+  "name": "freshprints",
+  "description": "heroku vm init",
+  "scripts": {
+    "postdeploy": "bin/setup",
+    "pr-predestroy": "bin/teardown"
+  },
+  "env": {
+    "ALI_CLOUD_OSS_ACCESSKEY_ID": {
+      "required": true
+    },
+    "ALI_CLOUD_OSS_ACCESSKEY_SECRET": {
+      "required": true
+    },
+    "ALI_CLOUD_OSS_BUCKET": {
+      "required": true
+    },
+    "ALI_CLOUD_OSS_REGION": {
+      "required": true
+    },
+    "GCLOUD_CLIENT_EMAIL": {
+      "required": true
+    },
+    "GCLOUD_PRIVATE_KEY": {
+      "required": true
+    },
+    "GCLOUD_STORAGE_BUCKET": {
+      "required": true
+    },
+    "SESSION_SECRET": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

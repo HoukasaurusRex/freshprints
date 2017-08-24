@@ -42,16 +42,16 @@
                 <h3>Analysis</h3>
                 <!--<h5>Click + symbol to expand</h5>-->
                 <div class="row">
-                    <div style="padding:5px;" id="spinnerdiv"><span style="margin-top:38px;" class="pull-left" id="spinnerel"></span><p id="spinnertext" class="pull-right">Analyzing Images ...</p> </div>
+                    <div style="padding:5px;" id="spinnerdiv"><span style="margin-top:38px;" id="spinnerel"></span></div>
                 </div>
                 <div id="div_clone" class="gvarv_clones panel panel-default card-panel">
-                    <header class="panel-heading tabbed-heading">
+                    <header class="panel-heading tabbed-heading" id="parent">
                         <div class="row">
                             <div class="col-md-2"><img id="gvarv_image_thumb" src="https://via.placeholder.com/350x350" class="img-rounded" width="50" height="50"></div>
                             <div class="col-md-8"><h4 id="gvarv_image_title" style="font-weight:400;font-style: italic;word-wrap:break-word;">Image Title</h4></div>
-                            <!--<div class="col-md-2">
-                                <button id="collapse_button" type="button" class="collapsed heading-toggle btn btn-default btn pull-right" data-toggle="collapse" data-target="#foo">
-                                    Expand
+                            <div class="col-md-2">
+                                <button id="collapse_button" type="button" class="collapsed heading-toggle btn btn-default btn pull-right" data-toggle="collapse">
+                                    Collapse
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -61,13 +61,14 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                            </div>-->
+                            </div>
                         </div>
                         <div class="panel-heading-toggle">
                             <ul class="nav active-tab"></ul>
                         </div>
 
-                        <ul class="nav nav-tabs ">
+                        <div id="navbar-collapse" class="collapse in">
+                        <ul class="nav nav-tabs">
                             <li class="active">
                                 <a id="labels-tab" data-toggle="tab" href="#labels-view">Labels<span id="num_labels_id" class="badge gvarv_badge"></span></a>
                             </li>
@@ -95,7 +96,7 @@
                         </ul>
                     </header>
 
-                    <div class="tab-content " id="foo">
+                    <div class="tab-content collapse in" id="tab-content">
                         
                         <div id="labels-view" class="tab-pane fade panel-body active in">
                             <div id="labelsChartContainer" style="min-width: 200px; max-width: 800px; height: 400px; margin:25px auto"></div>
@@ -195,6 +196,7 @@
                             <div id="logoDescriptionRow" class="row"></div>
                         </div>
                         <div id="json-view" class="tab-pane fade panel-body">
+                        </div>
                         </div>
                     </div>
                 </div>

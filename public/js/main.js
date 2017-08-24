@@ -121,6 +121,10 @@ $(function() {
             if (this.name) {
                 this.name = this.name +"_" + cloneCount;
             }
+            // if (this.attr("data-target")) {
+            //     let dTr = this.attr("data-target");
+            //     this.attr("data-target",dTr + "_" + cloneCount);
+            // }
         });
         $(`#${appendDivId}`).append(clone);
     }
@@ -142,6 +146,7 @@ $(function() {
         $("#landmark-tab_"+cloneCount).attr("href","#landmark-view_" + cloneCount);
         $("#logo-tab_"+cloneCount).attr("href","#logo-view_" + cloneCount);
         $("#json-tab_"+cloneCount).attr("href","#json-view_" + cloneCount);
+        $("#collapse_button_"+cloneCount).attr("data-target",`#navbar-collapse_${cloneCount},#tab-content_${cloneCount}`);
 
         //stop spinner
         $("#spinnerel").spin(false);
@@ -170,6 +175,10 @@ $(function() {
 
         // JSON tab
         $("#json-view_"+cloneCount).append(renderjson(data));
+
+        $('#div_clone > div').each(function() {
+            $(this).prependTo(this.parentNode);
+        });
 
         // Labels tab
         // create new gvarv obj
@@ -296,7 +305,7 @@ $(function() {
 
         // Web tab
         function buildWebTab () {
-            if (data.responses[0].webDetection.webEntities.length > 0) {
+            if (data.responses[0].webDetection.webEntities.length > 0 && data.responses[0].webDetection.webEntities != null ) {
                 $("#num_webmatch_id_"+cloneCount).text(data.responses[0].webDetection.fullMatchingImages.length + data.responses[0].webDetection.partialMatchingImages.length + data.responses[0].webDetection.pagesWithMatchingImages.length);
                 let webDataArr = [];
                 data.responses[0].webDetection.webEntities.forEach(function(el,i){
@@ -681,7 +690,12 @@ $(function() {
 
                 $('#' + containerId).append(table);
 
-            }   
+                //buildJQCloud();
+            }
+
+        function buildJQCloud (containerId,seriesData) {
+
+        }   
 
         function buildWebMatchGraph (containerId,seriesData) {
             Highcharts.chart(containerId, {

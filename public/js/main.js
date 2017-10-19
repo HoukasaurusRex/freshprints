@@ -174,7 +174,7 @@ $(function() {
         buildLogosTab ();
 
         // JSON tab
-        $("#json-view_"+cloneCount).append(renderjson(data));
+        $("#json-view_"+cloneCount).append(`<div>${data}</div>`);
 
         $('#div_clone > div').each(function() {
             $(this).prependTo(this.parentNode);

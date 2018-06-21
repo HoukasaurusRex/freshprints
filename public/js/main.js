@@ -24,18 +24,18 @@ $(function() {
     // GLOBAL FUNCTIONS
 
     // Google Landmark maps
-    function initializeGoogleMap(obj) {
+    // function initializeGoogleMap(obj) {
         // $(`#${obj.mapDiv}`).load(location.href + `#${obj.mapDiv}`);
-        const uluru = {lat: obj.lat, lng: obj.lng};
-        const map = new google.maps.Map(document.getElementById(obj.mapDiv), {
-            zoom: 8,
-            center: uluru
-        });
-        const marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-        });
-    }
+    //    const uluru = {lat: obj.lat, lng: obj.lng};
+    //    const map = new google.maps.Map(document.getElementById(obj.mapDiv), {
+    //        zoom: 8,
+    //        center: uluru
+    //    });
+    //    const marker = new google.maps.Marker({
+    //        position: uluru,
+    //        map: map
+    //    });
+    // }
 
     function formatJsonToHtml (obj) {
         $("#image-props")
@@ -379,7 +379,7 @@ $(function() {
         }
 
         // Landmarks tab
-        function buildLandmarksTab () {
+        /* function buildLandmarksTab () {
             if(data.responses[0].landmarkAnnotations.length > 0) {
                 $("#num_landmarks_id_"+cloneCount).text(data.responses[0].landmarkAnnotations.length);
                 const gvarv = new Gvarv("landmarks_canvas_"+cloneCount);
@@ -432,6 +432,7 @@ $(function() {
                     .append("<h3 class='text-center no-data' >NONE DETECTED</h3>");
             }
         }
+        */
 
         // Logos Tab
         function buildLogosTab () {

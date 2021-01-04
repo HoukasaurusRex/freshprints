@@ -16,7 +16,7 @@
     "@google-cloud/vision": "^0.11.5",
     "ali-oss": "^4.10.0",
     "ali-oss-extra": "0.0.24",
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "body-parser": "^1.15.1",
     "co": "^4.6.0",
     "compression": "^1.6.2",
